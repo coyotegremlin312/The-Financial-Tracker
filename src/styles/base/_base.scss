@@ -1,0 +1,232 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: American Typewriter;
+}
+
+button {
+  height: 45px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  font-weight: bold;
+  background-color:#00DFD0;
+  border: 2px solid black;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+  color: black;
+}
+
+.Header {
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: hotpink;
+  color: black;
+  min-width: 400px;
+}
+
+.HomePage{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: auto;
+  flex-wrap: wrap;
+}
+
+.Links {
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: auto;
+  min-width: 400px;
+  color: black;
+  flex-wrap: wrap;
+}
+
+.HomeLink{
+  color: black;
+}
+
+.DropMenu{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: black;
+  padding: 10px;
+}
+
+.Help{
+  color: black;
+}
+
+.ADList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: American Typewriter;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  min-width: 380px;
+  flex: auto;
+  padding: 20px;
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: American Typewriter;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  min-width: 380px;
+  flex: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.Item{
+  font-family: American Typewriter;
+  font-size: 20px;
+  background-color: #00DFD0;
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ADItem{
+  font-family: American Typewriter;
+  font-size: 20px;
+  background-color: hotpink;
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Dashboard{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Searchers{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.SearchTextBox{
+  height: 45px;
+  width: 300px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  margin-right: 20px;
+  margin-top: 3px;
+  border: 2px solid black;
+  background-color: #00DFD0;
+}
+
+.SortBySelector{
+  height: 50px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  background-color: #00DFD0;
+  font-weight: bold;
+  margin-right: 20px;
+  border: 2px solid black;
+}
+
+.AddEditPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.AddEditTitle{
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.DescriptionInput{
+  height: 45px;
+  width: 300px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  margin-right: 20px;
+  margin-top:10px;
+  border: 2px solid black;
+  background-color: #00DFD0;
+}
+
+.DebtDescriptionInput{
+  height: 45px;
+  width: 300px;
+  font-family: American Typewriter;
+  font-size: 17px;
+  margin-right: 20px;
+  margin-top:10px;
+  border: 2px solid black;
+  background-color: #00DFD0;
+}
+
+.AmountInput{
+  height: 45px;
+  width: 100px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  margin-right: 20px;
+  border: 2px solid black;
+  background-color: #00DFD0;
+}
+
+.FromAccountInput{
+  height: 45px;
+  width: 300px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  margin-right: 20px;
+  border: 2px solid black;
+  background-color: #00DFD0;
+}
+
+.ToAssetInput{
+  height: 45px;
+  width: 300px;
+  font-family: American Typewriter;
+  font-size: 20px;
+  margin-right: 20px;
+  border: 2px solid black;
+  background-color: #00DFD0;
+}
+
