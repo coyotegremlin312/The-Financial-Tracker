@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import assetReducer from '../reducers/assets';
 import debtsReducer from '../reducers/debts';
-import incomingFundsReducer from '../reducers/incomingfunds';
+import incomingFundsReducer from '../reducers/incomingFunds';
 import paymentsReducer from '../reducers/payments';
 import expensesReducer from '../reducers/expenses';
 import filtersReducer from '../reducers/filter';
