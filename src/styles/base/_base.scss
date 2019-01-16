@@ -30,7 +30,7 @@ button:disabled {
 .Header {
   font-size: 20px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -52,7 +52,7 @@ button:disabled {
   font-size: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex: auto;
   min-width: 400px;
@@ -62,6 +62,7 @@ button:disabled {
 
 .HomeLink{
   color: black;
+  padding-right: 20px;
 }
 
 .DropMenu{
@@ -75,6 +76,7 @@ button:disabled {
 
 .Help{
   color: black;
+  padding: 20px;
 }
 
 .ADList {
