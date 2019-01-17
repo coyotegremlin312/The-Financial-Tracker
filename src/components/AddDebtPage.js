@@ -1,17 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DebtForm from './DebtForm';
-import { addDebt } from '../actions/debts';
+import { startAddDebt } from '../actions/debts';
 
-const AddDebtPage = (props) => (
-    <div className="AddEditPage">
-        <h1 className="AddEditTitle">Add Debt</h1>
-        <DebtForm 
-            onSubmit={(debt) => {
-                props.dispatch(addDebt(debt));
-                props.history.push('/');
-              }}
-        />
-    </div>
-);
-export default connect()(AddDebtPage);
+export class AddDebtPage extends React.Component {
+    onSubmit = (debt) => {
+      this.props.startAddDebt(debt);
+      this.props.history.push('/');
+    };
+    render() {
+      return (
+        <div className="AddEditPage">
+          <h1 className="AddEditTitle">Add Debt</h1>
+          <DebtForm
+            onSubmit={this.onSubmit}
+          />
+        </div>
+      );
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => ({
+    startAddDebt: (debt) => dispatch(startAddDebt(debt))
+  });
+  
+  export default connect(undefined, mapDispatchToProps)(AddDebtPage);
+

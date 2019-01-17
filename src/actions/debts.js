@@ -1,19 +1,27 @@
-import uuid from 'uuid';
+import database from '../firebase/firebase'
 
-export const addDebt = (
-    { 
-        description = '', 
-        amount = 0, 
-        createdAt = 0 
-        } = {}) => ({
+export const addDebt = (debt) => ({
     type: 'ADD_DEBT',
-    debt: {
-        id: uuid(),
-        description,
-        amount, 
-        createdAt
-    }
+    debt
 });
+
+export const startAddDebt = (debtData = {}) => {
+    return (dispatch) => {
+        const {
+            description = '',  
+            amount = 0, 
+            createdAt = 0 
+        } = debtData;
+        const debt = { description, amount, createdAt };
+
+        database.ref('debts').push(debt).then((ref) => {
+            dispatch(addDebt({
+                id: ref.key,
+                ...debt
+            }));
+        });
+    };
+};
 
 export const removeDebt = ({ id } = {}) => ({
     type: 'REMOVE_DEBT',
