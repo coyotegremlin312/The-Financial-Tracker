@@ -20,6 +20,8 @@ export default (state = paymentsReducerDefaultState, action) => {
                     return payment;
                 }
             });
+        case 'SET_PAYMENTS':
+            return action.payments;
         default:
             return state;
     }

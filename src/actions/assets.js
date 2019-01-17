@@ -34,3 +34,25 @@ export const editAsset = (id, updates) => ({
     id,
     updates
 });
+
+export const setAssets = (assets) => ({
+    type: 'SET_ASSETS',
+    assets
+  });
+
+export const startSetAssets = () => {
+    return (dispatch) => {
+      return database.ref('assets').once('value').then((snapshot) => {
+        const assets = [];
+  
+        snapshot.forEach((childSnapshot) => {
+          assets.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+  
+        dispatch(setAssets(assets));
+      });
+    };
+  };

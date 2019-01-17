@@ -20,6 +20,8 @@ export default (state = assetReducerDefaultState, action) => {
                     return asset;
                 }
             });
+        case 'SET_ASSETS':
+            return action.assets;
         default:
             return state;
     }

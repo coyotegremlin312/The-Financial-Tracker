@@ -33,3 +33,25 @@ export const editPayment = (id, updates) => ({
     id,
     updates
 });
+
+export const setPayments = (payments) => ({
+    type: 'SET_PAYMENTS',
+    payments
+  });
+
+export const startSetPayments = () => {
+    return (dispatch) => {
+      return database.ref('payments').once('value').then((snapshot) => {
+        const payments = [];
+  
+        snapshot.forEach((childSnapshot) => {
+          payments.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+  
+        dispatch(setPayments(payments));
+      });
+    };
+  };

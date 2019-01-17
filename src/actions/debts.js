@@ -33,3 +33,25 @@ export const editDebt = (id, updates) => ({
     id,
     updates
 });
+
+export const setDebts = (debts) => ({
+    type: 'SET_DEBTS',
+    debts
+  });
+
+export const startSetDebts = () => {
+    return (dispatch) => {
+      return database.ref('debts').once('value').then((snapshot) => {
+        const debts = [];
+  
+        snapshot.forEach((childSnapshot) => {
+          debts.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+  
+        dispatch(setDebts(debts));
+      });
+    };
+  };

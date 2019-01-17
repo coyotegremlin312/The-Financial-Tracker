@@ -34,3 +34,25 @@ export const editIncomingFund = (id, updates) => ({
     id,
     updates
 });
+
+export const setIncomingFunds = (incomingFunds) => ({
+    type: 'SET_INCOMING_FUNDS',
+    incomingFunds
+  });
+
+export const startSetIncomingFunds = () => {
+    return (dispatch) => {
+      return database.ref('incomingFunds').once('value').then((snapshot) => {
+        const incomingFunds = [];
+  
+        snapshot.forEach((childSnapshot) => {
+          incomingFunds.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+  
+        dispatch(setIncomingFunds(incomingFunds));
+      });
+    };
+  };

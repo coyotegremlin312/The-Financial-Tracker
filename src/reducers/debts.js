@@ -20,6 +20,8 @@ export default (state = debtReducerDefaultState, action) => {
                     return debt;
                 }
             });
+        case 'SET_DEBTS':
+            return action.debts;
         default:
             return state;
     }

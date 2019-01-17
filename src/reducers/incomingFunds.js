@@ -20,6 +20,8 @@ export default (state = incomingFundsReducerDefaultState, action) => {
                     return incomingFund;
                 }
             });
+        case 'SET_INCOMING_FUNDS':
+            return action.incomingFunds;
         default:
             return state;
     }
