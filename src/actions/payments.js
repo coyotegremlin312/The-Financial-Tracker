@@ -42,6 +42,14 @@ export const editPayment = (id, updates) => ({
     updates
 });
 
+export const startEditPayment = (id, updates) => {
+    return (dispatch) => {
+      return database.ref(`payments/${id}`).update(updates).then(() => {
+        dispatch(editPayment(id, updates));
+      });
+    };
+  };
+
 export const setPayments = (payments) => ({
     type: 'SET_PAYMENTS',
     payments

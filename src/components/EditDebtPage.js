@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DebtForm from './DebtForm';
-import { editDebt, startRemoveDebt } from '../actions/debts';
+import { startEditDebt, startRemoveDebt } from '../actions/debts';
 
 export class EditDebtPage extends React.Component {
     onSubmit = (debt) => {
-      this.props.editDebt(this.props.debt.id, debt);
+      this.props.startEditDebt(this.props.debt.id, debt);
       this.props.history.push('/');
     };
     onRemove = () => {
@@ -33,7 +33,7 @@ const mapStateToProps = (state, props) => {
   };
 
 const mapDispatchToProps = (dispatch, props) => ({
-    editDebt: (id, debt) => dispatch(editDebt(id, debt)),
+    startEditDebt: (id, debt) => dispatch(startEditDebt(id, debt)),
     startRemoveDebt: (data) => dispatch(startRemoveDebt(data))
 });
 

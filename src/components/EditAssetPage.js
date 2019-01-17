@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AssetForm from './AssetForm';
-import { editAsset, startRemoveAsset } from '../actions/assets';
+import { startEditAsset, startRemoveAsset } from '../actions/assets';
 
 export class EditAssetPage extends React.Component {
     onSubmit = (asset) => {
-      this.props.editAsset(this.props.asset.id, asset);
+      this.props.startEditAsset(this.props.asset.id, asset);
       this.props.history.push('/');
     };
     onRemove = () => {
@@ -33,7 +33,7 @@ const mapStateToProps = (state, props) => {
   };
 
 const mapDispatchToProps = (dispatch, props) => ({
-    editAsset: (id, asset) => dispatch(editAsset(id, asset)),
+    startEditAsset: (id, asset) => dispatch(startEditAsset(id, asset)),
     startRemoveAsset: (data) => dispatch(startRemoveAsset(data))
   });
 

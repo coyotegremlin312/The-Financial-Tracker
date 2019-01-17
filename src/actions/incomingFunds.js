@@ -43,6 +43,14 @@ export const editIncomingFund = (id, updates) => ({
     updates
 });
 
+export const startEditIncomingFund = (id, updates) => {
+    return (dispatch) => {
+      return database.ref(`incomingFunds/${id}`).update(updates).then(() => {
+        dispatch(editIncomingFund(id, updates));
+      });
+    };
+  };
+
 export const setIncomingFunds = (incomingFunds) => ({
     type: 'SET_INCOMING_FUNDS',
     incomingFunds

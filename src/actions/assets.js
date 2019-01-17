@@ -43,6 +43,14 @@ export const editAsset = (id, updates) => ({
     updates
 });
 
+export const startEditAsset = (id, updates) => {
+    return (dispatch) => {
+      return database.ref(`assets/${id}`).update(updates).then(() => {
+        dispatch(editAsset(id, updates));
+      });
+    };
+  };
+
 export const setAssets = (assets) => ({
     type: 'SET_ASSETS',
     assets

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PaymentForm from './PaymentForm';
-import { editPayment, startRemovePayment } from '../actions/payments';
+import { startEditPayment, startRemovePayment } from '../actions/payments';
 
 export class EditPaymentPage extends React.Component {
     onSubmit = (payment) => {
-      this.props.editPayment(this.props.payment.id, payment);
+      this.props.startEditPayment(this.props.payment.id, payment);
       this.props.history.push('/paymentdashboard');
     };
     onRemove = () => {
@@ -32,7 +32,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-    editPayment: (id, payment) => dispatch(editPayment(id, payment)),
+    startEditPayment: (id, payment) => dispatch(startEditPayment(id, payment)),
     startRemovePayment: (data) => dispatch(startRemovePayment(data))
 });
   

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import IncomingFundForm from './IncomingFundForm';
-import { editIncomingFund, startRemoveIncomingFund } from '../actions/incomingFunds';
+import { startEditIncomingFund, startRemoveIncomingFund } from '../actions/incomingFunds';
 
 export class EditIncomingFundPage extends React.Component {
     onSubmit = (incomingFund) => {
-      this.props.editIncomingFund(this.props.incomingFund.id, incomingFund);
+      this.props.startEditIncomingFund(this.props.incomingFund.id, incomingFund);
       this.props.history.push('/incomingfunddashboard');
     };
     onRemove = () => {
@@ -32,7 +32,7 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-    editIncomingFund: (id, incomingFund) => dispatch(editIncomingFund(id, incomingFund)),
+    startEditIncomingFund: (id, incomingFund) => dispatch(startEditIncomingFund(id, incomingFund)),
     startRemoveIncomingFund: (data) => dispatch(startRemoveIncomingFund(data))
   });
   

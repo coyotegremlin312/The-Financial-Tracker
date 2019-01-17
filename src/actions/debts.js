@@ -42,6 +42,14 @@ export const editDebt = (id, updates) => ({
     updates
 });
 
+export const startEditDebt = (id, updates) => {
+    return (dispatch) => {
+      return database.ref(`debts/${id}`).update(updates).then(() => {
+        dispatch(editDebt(id, updates));
+      });
+    };
+  };
+
 export const setDebts = (debts) => ({
     type: 'SET_DEBTS',
     debts
