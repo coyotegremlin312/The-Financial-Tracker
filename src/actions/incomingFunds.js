@@ -29,6 +29,14 @@ export const removeIncomingFund = ({ id } = {}) => ({
     id
 });
 
+export const startRemoveIncomingFund = ({ id } = {}) => {
+    return (dispatch) => {
+      return database.ref(`incomingFunds/${id}`).remove().then(() => {
+        dispatch(removeIncomingFund({ id }));
+      });
+    };
+};
+
 export const editIncomingFund = (id, updates) => ({
     type: 'EDIT_INCOMING_FUND',
     id,

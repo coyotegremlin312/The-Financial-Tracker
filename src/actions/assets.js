@@ -29,6 +29,14 @@ export const removeAsset = ({ id } = {}) => ({
     id
 });
 
+export const startRemoveAsset = ({ id } = {}) => {
+    return (dispatch) => {
+      return database.ref(`assets/${id}`).remove().then(() => {
+        dispatch(removeAsset({ id }));
+      });
+    };
+};
+
 export const editAsset = (id, updates) => ({
     type: 'EDIT_ASSET',
     id,

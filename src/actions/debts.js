@@ -28,6 +28,14 @@ export const removeDebt = ({ id } = {}) => ({
     id
 });
 
+export const startRemoveDebt = ({ id } = {}) => {
+    return (dispatch) => {
+      return database.ref(`debts/${id}`).remove().then(() => {
+        dispatch(removeDebt({ id }));
+      });
+    };
+};
+
 export const editDebt = (id, updates) => ({
     type: 'EDIT_DEBT',
     id,

@@ -1,25 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DebtForm from './DebtForm';
-import { editDebt, removeDebt } from '../actions/debts';
+import { editDebt, startRemoveDebt } from '../actions/debts';
 
-const EditDebtPage = (props) => {
-    return (
+export class EditDebtPage extends React.Component {
+    onSubmit = (debt) => {
+      this.props.editDebt(this.props.debt.id, debt);
+      this.props.history.push('/');
+    };
+    onRemove = () => {
+      this.props.startRemoveDebt({ id: this.props.debt.id });
+      this.props.history.push('/');
+    };
+    render() {
+      return (
         <div className="AddEditPage">
-            <DebtForm
-                debt={props.debt}
-                onSubmit={(debt) => {
-                    props.dispatch(editDebt(props.debt.id, debt));
-                    props.history.push('/');
-                }}
-            />
-        <button onClick={() => {
-            props.dispatch(removeDebt({ id: props.debt.id }));
-            props.history.push('/');
-        }}>Remove</button>
+          <DebtForm
+            debt={this.props.debt}
+            onSubmit={this.onSubmit}
+          />
+          <button onClick={this.onRemove}>Remove</button>
         </div>
-    );
-};
+      );
+    }
+  };
+  
 
 const mapStateToProps = (state, props) => {
     return {
@@ -27,4 +32,9 @@ const mapStateToProps = (state, props) => {
     };
   };
 
-export default connect(mapStateToProps)(EditDebtPage);
+const mapDispatchToProps = (dispatch, props) => ({
+    editDebt: (id, debt) => dispatch(editDebt(id, debt)),
+    startRemoveDebt: (data) => dispatch(startRemoveDebt(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditDebtPage);

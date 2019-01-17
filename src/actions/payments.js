@@ -28,6 +28,14 @@ export const removePayment = ({ id } = {}) => ({
     id
 });
 
+export const startRemovePayment = ({ id } = {}) => {
+    return (dispatch) => {
+      return database.ref(`payments/${id}`).remove().then(() => {
+        dispatch(removePayment({ id }));
+      });
+    };
+};
+
 export const editPayment = (id, updates) => ({
     type: 'EDIT_PAYMENT',
     id,
