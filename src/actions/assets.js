@@ -1,19 +1,28 @@
-import uuid from 'uuid';
+import database from '../firebase/firebase'
 
-export const addAsset = (
-    { 
-        description = '',  
-        amount = 0, 
-        createdAt = 0 
-        } = {}) => ({
+export const addAsset = (asset) => ({
     type: 'ADD_ASSET',
-    asset: {
-        id: uuid(),
-        description,
-        amount, 
-        createdAt
-    }
+    asset
 });
+
+export const startAddAsset = (assetData = {}) => {
+    return (dispatch) => {
+        const {
+            description = '',  
+            amount = 0, 
+            createdAt = 0 
+        } = assetData;
+        const asset = { description, amount, createdAt };
+
+        database.ref('assets').push(asset).then((ref) => {
+            dispatch(addAsset({
+                id: ref.key,
+                ...asset
+            }));
+        });
+    };
+};
+
 
 export const removeAsset = ({ id } = {}) => ({
     type: 'REMOVE_ASSET',

@@ -1,17 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AssetForm from './AssetForm';
-import { addAsset } from '../actions/assets';
+import { startAddAsset } from '../actions/assets';
 
-const AddAssetPage = (props) => (
-    <div className="AddEditPage">
-        <h1 className="AddEditTitle">Add Asset</h1>
-        <AssetForm 
-            onSubmit={(asset) => {
-                props.dispatch(addAsset(asset));
-                props.history.push('/');
-              }}
-        />
-    </div>
-);
-export default connect()(AddAssetPage);
+export class AddAssetPage extends React.Component {
+    onSubmit = (asset) => {
+      this.props.startAddAsset(asset);
+      this.props.history.push('/');
+    };
+    render() {
+      return (
+        <div className="AddEditPage">
+          <h1 className="AddEditTitle">Add Asset</h1>
+          <AssetForm
+            onSubmit={this.onSubmit}
+          />
+        </div>
+      );
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => ({
+    startAddAsset: (asset) => dispatch(startAddAsset(asset))
+  });
+  
+  export default connect(undefined, mapDispatchToProps)(AddAssetPage);
