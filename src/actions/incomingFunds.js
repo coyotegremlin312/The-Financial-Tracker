@@ -1,21 +1,28 @@
-import uuid from 'uuid';
+import database from '../firebase/firebase'
 
-export const addIncomingFund = (
-    { 
-        description = '', 
-        amount = 0,
-        toAsset = '', 
-        createdAt = 0 
-        } = {}) => ({
+export const addIncomingFund = (incomingFund) => ({
     type: 'ADD_INCOMING_FUND',
-    incomingFund: {
-        id: uuid(),
-        description,
-        amount,
-        toAsset, 
-        createdAt
-    }
+    incomingFund
 });
+
+export const startAddIncomingFund = (incomingFundData = {}) => {
+    return (dispatch) => {
+        const {
+            description = '', 
+            amount = 0,
+            toAsset = '', 
+            createdAt = 0 
+        } = incomingFundData;
+        const incomingFund = { description, amount, toAsset, createdAt };
+
+        database.ref('incomingFunds').push(incomingFund).then((ref) => {
+            dispatch(addIncomingFund({
+                id: ref.key,
+                ...incomingFund
+            }));
+        });
+    };
+};
 
 export const removeIncomingFund = ({ id } = {}) => ({
     type: 'REMOVE_INCOMING_FUND',
