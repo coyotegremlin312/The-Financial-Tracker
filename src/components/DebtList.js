@@ -5,7 +5,10 @@ import selectDebts from '../selectors/debts';
 
 const DebtList = (props) => (
   <div className="ADList">
-    <h1>Debt List</h1>
+    <div className="ADListTop">
+      <p className="ListTopLabels">Debt</p>
+      <p className="ListTopLabels">Amount</p>
+    </div>
     {props.debts.map((debt) => {
       return <DebtListItem key={debt.id} {...debt} />;
     })}

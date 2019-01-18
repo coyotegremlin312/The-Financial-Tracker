@@ -5,7 +5,10 @@ import selectPayments from '../selectors/payments';
 
 const PaymentList = (props) => (
   <div className="List">
-    <h1 className="AddEditTitle">Payment List</h1>
+    <div className="ListTop">
+      <p className="ListTopLabels">Payment</p>
+      <p className="ListTopLabels">Amount</p>
+    </div>
     {props.payments.map((payment) => {
       return <PaymentListItem key={payment.id} {...payment} />;
     })}

@@ -3,18 +3,17 @@ html {
 }
 
 body {
-  font-family: American Typewriter;
+  font-family: fantasy;
 }
 
 button {
   height: 45px;
-  font-family: American Typewriter;
+  font-family: fantasy;
   font-size: 20px;
   font-weight: bold;
   background-color:#00DFD0;
   border: 2px solid black;
   cursor: pointer;
-  padding: 10px;
   margin: 10px;
 }
 
@@ -33,18 +32,17 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  background-color: hotpink;
+  background-color: silver;
   color: black;
-  min-width: 400px;
+  min-width: 840px;
 }
 
 .HomePage{
+  min-width: 840px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-  flex: auto;
   flex-wrap: wrap;
 }
 
@@ -52,17 +50,14 @@ button:disabled {
   font-size: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  flex: auto;
-  min-width: 400px;
+  min-width: 840px;
   color: black;
-  flex-wrap: wrap;
 }
 
 .HomeLink{
   color: black;
-  padding-right: 20px;
 }
 
 .DropMenu{
@@ -71,89 +66,136 @@ button:disabled {
   justify-content: space-evenly;
   align-items: center;
   color: black;
-  padding: 10px;
 }
 
 .Help{
   color: black;
-  padding: 20px;
-}
-
-.ADList {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  font-family: American Typewriter;
-  font-size: 20px;
-  color: black;
-  background-color: white;
-  min-width: 360px;
-  flex: auto;
-  padding: 20px;
-  text-align: center;
 }
 
 .List {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: flex-start;
-  font-family: American Typewriter;
+  align-items: center;
+  flex-shrink: 50%;
+  font-family: fantasy;
   font-size: 20px;
   color: black;
   background-color: white;
-  min-width: 380px;
-  flex: auto;
+  min-width: 840px;
   margin-top: 20px;
-  padding: 20px;
   text-align: center;
+}
+
+.ListTop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: fantasy;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  background-color: silver;
+  border: 2px solid black;
+  height: 60px;
+  min-width: 800px;
+}
+
+.ListTopLabels{
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bolder;
 }
 
 .Item{
-  min-width: 400px;
-  font-family: American Typewriter;
-  font-size: 20px;
-  background-color: #00DFD0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  text-align: center;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  min-width: 800px;
+  font-family: fantasy;
+  font-size: 20px;
+  background-color: white;
 }
 
-.ADItem{
-  min-width: 400px;
-  font-family: American Typewriter;
-  font-size: 20px;
-  background-color: hotpink;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  text-align: center;
+.ListItemLeft{
   padding-left: 20px;
+  text-align: left;
 }
 
-.Dashboard{
+.AssetContribution{
+  color:#EC51AD;
+}
+
+.ListItemRight{
+  padding-right: 20px;
+}
+
+.ItemLink{
+  color: black;
+  text-decoration: none;
+}
+
+.ADList {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  flex-shrink: 50%;
+  font-family: fantasy;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  min-width: 700px;
+  margin-top: 20px;
+  text-align: center;
 }
 
-.Searchers{
+.ADListTop{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: fantasy;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  background-color: silver;
+  border: 2px solid black;
+  height: 60px;
+  min-width: 700px;
+}
+
+.ADItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  min-width: 700px;
+  font-family: fantasy;
+  font-size: 20px;
+  background-color: white;
+}
+
+.Dashboard{
+  margin-top: 10px;
+  min-width: 840px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .SearchTextBox{
   height: 45px;
-  width: 300px;
-  font-family: American Typewriter;
+  min-width: 300px;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   margin-top: 3px;
@@ -163,7 +205,7 @@ button:disabled {
 
 .SortBySelector{
   height: 50px;
-  font-family: American Typewriter;
+  font-family: fantasy;
   font-size: 20px;
   background-color: #00DFD0;
   font-weight: bold;
@@ -185,8 +227,8 @@ button:disabled {
 
 .DescriptionInput{
   height: 45px;
-  width: 300px;
-  font-family: American Typewriter;
+  min-width: 300px;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   margin-top:10px;
@@ -196,8 +238,8 @@ button:disabled {
 
 .DebtDescriptionInput{
   height: 45px;
-  width: 300px;
-  font-family: American Typewriter;
+  min-width: 300px;
+  font-family: fantasy;
   font-size: 17px;
   margin-right: 20px;
   margin-top:10px;
@@ -207,8 +249,8 @@ button:disabled {
 
 .AmountInput{
   height: 45px;
-  width: 100px;
-  font-family: American Typewriter;
+  min-width: 100px;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   border: 2px solid black;
@@ -217,8 +259,8 @@ button:disabled {
 
 .FromAccountInput{
   height: 45px;
-  width: 300px;
-  font-family: American Typewriter;
+  min-width: 300px;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   border: 2px solid black;
@@ -227,8 +269,8 @@ button:disabled {
 
 .ToAssetInput{
   height: 45px;
-  width: 300px;
-  font-family: American Typewriter;
+  min-width: 300px;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   border: 2px solid black;

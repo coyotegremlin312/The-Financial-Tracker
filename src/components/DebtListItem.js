@@ -6,10 +6,12 @@ import numeral from 'numeral';
 const DebtListItem = ({ id, description, amount }) => (
 
   <div className="ADItem">
-      <Link to={`/editdebt/${id}`}>
+    <div className="ListItemLeft">
+      <Link to={`/editdebt/${id}`} className="ItemLink">
         <h3>{description}</h3>
       </Link>
-      <p><b>Balance:</b> {numeral(amount / 100).format('$0,0.00')}</p>
+    </div>
+      <p className="ListItemRight">{numeral(amount / 100).format('$0,0.00')}</p>
   </div>
 );
 

@@ -5,7 +5,10 @@ import selectIncomingFunds from '../selectors/incomingFunds';
 
 const IncomingFundList = (props) => (
   <div className="List">
-    <h1 className="AddEditTitle">Incoming Funds List</h1>
+    <div className="ListTop">
+      <p className="ListTopLabels">Incoming Fund</p>
+      <p className="ListTopLabels">Amount</p>
+    </div>
     {props.incomingFunds.map((incomingFund) => {
       return <IncomingFundListItem key={incomingFund.id} {...incomingFund} />;
     })}

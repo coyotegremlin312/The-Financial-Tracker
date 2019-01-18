@@ -5,7 +5,10 @@ import selectAssets from '../selectors/assets';
 
 const AssetList = (props) => (
   <div className="ADList">
-    <h1>Asset List</h1>
+    <div className="ADListTop">
+      <p className="ListTopLabels">Asset</p>
+      <p className="ListTopLabels">Amount</p>
+    </div>
     {props.assets.map((asset) => {
       return <AssetListItem key={asset.id} {...asset} />;
     })}

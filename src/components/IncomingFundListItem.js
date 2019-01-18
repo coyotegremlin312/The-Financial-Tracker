@@ -7,12 +7,14 @@ import numeral from 'numeral';
 const IncomingFundListItem = ({ id, description, amount, toAsset, createdAt }) => (
 
   <div className="Item">
-      <Link to={`/editincomingfund/${id}`}>
-        <h3><b>Incoming Fund:</b> {description}</h3>
+      <div className="ListItemLeft">
+      <Link to={`/editincomingfund/${id}`} className="ItemLink">
+        <h3><b>{description}</b></h3>
       </Link>
-      <p><b>Amount:</b> {numeral(amount / 100).format('$0,0.00')}</p>
-      <p><b>Date:</b> {moment(createdAt).format('MMMM Do, YYYY')}</p>
-      <p><b>To Asset:</b> {toAsset} </p>
+      <p className="AssetContribution"><b>To Asset:</b> {toAsset} </p>
+      <p>{moment(createdAt).format('MMMM Do, YYYY')}</p>
+      </div>
+      <p className="ListItemRight">{numeral(amount / 100).format('$0,0.00')}</p>
   </div>
 );
 
