@@ -43,7 +43,7 @@ button:disabled {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   flex: auto;
   flex-wrap: wrap;
 }
@@ -83,21 +83,22 @@ button:disabled {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   font-family: American Typewriter;
   font-size: 20px;
   color: black;
   background-color: white;
-  min-width: 380px;
+  min-width: 360px;
   flex: auto;
   padding: 20px;
+  text-align: center;
 }
 
 .List {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
   font-family: American Typewriter;
   font-size: 20px;
   color: black;
@@ -106,30 +107,32 @@ button:disabled {
   flex: auto;
   margin-top: 20px;
   padding: 20px;
+  text-align: center;
 }
 
 .Item{
+  min-width: 400px;
   font-family: American Typewriter;
   font-size: 20px;
   background-color: #00DFD0;
-  padding-left: 200px;
-  padding-right: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  text-align: center;
 }
 
 .ADItem{
+  min-width: 400px;
   font-family: American Typewriter;
   font-size: 20px;
   background-color: hotpink;
-  padding-left: 200px;
-  padding-right: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  text-align: center;
+  padding-left: 20px;
 }
 
 .Dashboard{
