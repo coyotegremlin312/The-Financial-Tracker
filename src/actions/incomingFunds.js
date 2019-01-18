@@ -1,4 +1,6 @@
 import database from '../firebase/firebase'
+import {startEditDebt} from './debts';
+import {startEditAsset} from './assets'
 
 export const addIncomingFund = (incomingFund) => ({
     type: 'ADD_INCOMING_FUND',
@@ -20,7 +22,27 @@ export const startAddIncomingFund = (incomingFundData = {}) => {
                 id: ref.key,
                 ...incomingFund
             }));
-        });
+        }).then(() => {
+          var ref = database.ref("debts");
+          ref.orderByChild("description").equalTo(incomingFundData.toAsset).on("child_added", function(snapshot) {
+              let key = snapshot.key;
+              let subtract = snapshot.val();
+              let update = subtract.amount - incomingFundData.amount;
+              return database.ref(`debts/${snapshot.key}`).update({amount: update}).then(() => {
+                dispatch(startEditDebt(key, {amount: update}));
+              });
+          })
+        }).then(() => {
+          var ref = database.ref("assets");
+          ref.orderByChild("description").equalTo(incomingFundData.toAsset).on("child_added", function(snapshot) {
+              let key = snapshot.key;
+              let subtract = snapshot.val();
+              let update = subtract.amount + incomingFundData.amount;
+              return database.ref(`assets/${snapshot.key}`).update({amount: update}).then(() => {
+                dispatch(startEditAsset(key, {amount: update}));
+              });
+          })
+        })
     };
 };
 

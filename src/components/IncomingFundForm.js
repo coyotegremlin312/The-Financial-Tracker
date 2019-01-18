@@ -76,7 +76,7 @@ export default class IncomingFundForm extends React.Component {
                     />
                     <input
                         type="text"
-                        placeholder="To Asset"
+                        placeholder="To Asset or Debt"
                         className="ToAssetInput"
                         value={this.state.toAsset}
                         onChange={this.onAssetChange}

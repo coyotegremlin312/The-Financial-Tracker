@@ -1,4 +1,5 @@
 import database from '../firebase/firebase'
+import {startEditDebt} from './debts';
 
 export const addExpense = (expense) => ({
     type: 'ADD_EXPENSE',
@@ -20,7 +21,17 @@ export const startAddExpense = (expenseData = {}) => {
                 id: ref.key,
                 ...expense
             }));
-        });
+        }).then(() => {
+          var ref = database.ref("debts");
+          ref.orderByChild("description").equalTo(expenseData.fromAccount).on("child_added", function(snapshot) {
+              let key = snapshot.key;
+              let subtract = snapshot.val();
+              let update = subtract.amount + expenseData.amount;
+              return database.ref(`debts/${snapshot.key}`).update({amount: update}).then(() => {
+                dispatch(startEditDebt(key, {amount: update}));
+              });
+          })
+        })
     };
 };
 

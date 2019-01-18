@@ -10,6 +10,7 @@ export default class PaymentForm extends React.Component {
         this.state = {
           description: props.payment ? props.payment.description : '',
           amount: props.payment ? (props.payment.amount / 100).toString() : '',
+          fromAsset: props.payment ? props.payment.fromAsset : '',
           createdAt: props.payment ? moment(props.payment.createdAt) : moment(),
           calendarFocused: false,
           error: ''
@@ -25,6 +26,10 @@ export default class PaymentForm extends React.Component {
         if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)){
         this.setState(() => ({ amount }));
         }
+    };
+    onFromAssetChange = (e) => {
+        const fromAsset = e.target.value;
+        this.setState(() => ({ fromAsset }));
     };
     onDateChange = (createdAt) => {
         if (createdAt) {
@@ -44,6 +49,7 @@ export default class PaymentForm extends React.Component {
           this.props.onSubmit({
             description: this.state.description,
             amount: parseFloat(this.state.amount, 10) * 100,
+            fromAsset: this.state.fromAsset,
             createdAt: this.state.createdAt.valueOf(),
           });
         }
@@ -67,6 +73,13 @@ export default class PaymentForm extends React.Component {
                         className="AmountInput"
                         value={this.state.amount}
                         onChange={this.onAmountChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="From Asset"
+                        className="DescriptionInput"
+                        value={this.state.fromAsset}
+                        onChange={this.onFromAssetChange}
                     />
                     <SingleDatePicker
                         date={this.state.createdAt}

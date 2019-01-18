@@ -1,8 +1,8 @@
 {
-  "name": "boilerplate",
+  "name": "the-financial-tracker",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Ashley Brown",
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack",

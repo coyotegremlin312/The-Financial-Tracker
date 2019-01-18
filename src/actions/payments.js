@@ -1,4 +1,6 @@
 import database from '../firebase/firebase'
+import {startEditDebt} from './debts';
+import {startEditAsset} from './assets'
 
 export const addPayment = (payment) => ({
     type: 'ADD_PAYMENT',
@@ -9,17 +11,38 @@ export const startAddPayment = (paymentData = {}) => {
     return (dispatch) => {
         const {
             description = '',  
-            amount = 0, 
+            amount = 0,
+            fromAsset = '',
             createdAt = 0 
         } = paymentData;
-        const payment = { description, amount, createdAt };
+        const payment = { description, amount, fromAsset, createdAt };
 
         database.ref('payments').push(payment).then((ref) => {
             dispatch(addPayment({
                 id: ref.key,
                 ...payment
             }));
-        });
+        }).then(() => {
+          var ref = database.ref("debts");
+          ref.orderByChild("description").equalTo(paymentData.description).on("child_added", function(snapshot) {
+              let key = snapshot.key;
+              let subtract = snapshot.val();
+              let update = subtract.amount - paymentData.amount;
+              return database.ref(`debts/${snapshot.key}`).update({amount: update}).then(() => {
+                dispatch(startEditDebt(key, {amount: update}));
+              });
+          })
+        }).then(() => {
+          var ref = database.ref("assets");
+          ref.orderByChild("description").equalTo(paymentData.fromAsset).on("child_added", function(snapshot) {
+              let key = snapshot.key;
+              let subtract = snapshot.val();
+              let update = subtract.amount - paymentData.amount;
+              return database.ref(`assets/${snapshot.key}`).update({amount: update}).then(() => {
+                dispatch(startEditAsset(key, {amount: update}));
+              });
+          })
+        })
     };
 };
 
