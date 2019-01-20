@@ -1,7 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import Select from 'react-select';
 import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css'
+import 'react-dates/lib/css/_datepicker.css';
+import database from '../firebase/firebase';
 
 export default class PaymentForm extends React.Component {
     constructor(props) {
@@ -10,14 +12,42 @@ export default class PaymentForm extends React.Component {
         this.state = {
           description: props.payment ? props.payment.description : '',
           amount: props.payment ? (props.payment.amount / 100).toString() : '',
+          dropOptions: [],
+          dropOptionsAsset: [],
           fromAsset: props.payment ? props.payment.fromAsset : '',
           createdAt: props.payment ? moment(props.payment.createdAt) : moment(),
           calendarFocused: false,
           error: ''
         };
       }
+      componentDidMount = () => {
+        database.ref('debts')
+        .on('value', (ashley) => {
+            const debtsList = [];
+        ashley.forEach((childAshley) => {
+            let boom = childAshley.val();
+            debtsList.push({
+        value: boom.description,
+        label: boom.description
+      })
+      this.setState(() => ({ dropOptions: debtsList }));
+        })
+    });
+        database.ref('assets')
+        .on('value', (ashley) => {
+            const assetsList = [];
+        ashley.forEach((childAshley) => {
+            let boom = childAshley.val();
+            assetsList.push({
+                value: boom.description,
+                label: boom.description
+            })
+        this.setState(() => ({ dropOptionsAsset: assetsList }));
+    })
+    });
+    };
     onDescriptionChange = (e) => {
-        const description = e.target.value;
+        const description = e.value;
         this.setState(() => ({ description }));
     };
     onAmountChange = (e) => {
@@ -28,7 +58,7 @@ export default class PaymentForm extends React.Component {
         }
     };
     onFromAssetChange = (e) => {
-        const fromAsset = e.target.value;
+        const fromAsset = e.value;
         this.setState(() => ({ fromAsset }));
     };
     onDateChange = (createdAt) => {
@@ -59,27 +89,19 @@ export default class PaymentForm extends React.Component {
             <div className="InputForm">
                 {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.onSubmit}>
-                    <input
-                        type="text"
-                        placeholder="To Account"
+                    <Select
+                        defaultInputValue="To Account"
                         className="DescriptionInput"
-                        autoFocus
-                        value={this.state.description}
+                        value= {{label: this.state.description, value: this.state.description}}
                         onChange={this.onDescriptionChange}
+                        options={this.state.dropOptions}
                     />
-                    <input
-                        type="text"
-                        placeholder="Amount"
-                        className="AmountInput"
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}
-                    />
-                    <input
-                        type="text"
-                        placeholder="From Asset"
+                    <Select
+                        defaultInputValue="From Asset"
                         className="DescriptionInput"
-                        value={this.state.fromAsset}
+                        value= {{label: this.state.fromAsset, value: this.state.fromAsset}}
                         onChange={this.onFromAssetChange}
+                        options={this.state.dropOptionsAsset}
                     />
                     <SingleDatePicker
                         date={this.state.createdAt}

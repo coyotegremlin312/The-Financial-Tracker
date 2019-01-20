@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import Select from 'react-select'
+import Select from 'react-select';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import database from '../firebase/firebase';
@@ -19,7 +19,6 @@ export default class ExpenseForm extends React.Component {
           error: ''
         };
       }
-
     componentDidMount = () => {
         database.ref('debts')
         .on('value', (ashley) => {
@@ -31,10 +30,8 @@ export default class ExpenseForm extends React.Component {
         label: boom.description
       })
       this.setState(() => ({ dropOptions: debtsList }));
-    })
-    console.log(debtsList);
-  });
-
+        })
+    });
     }; 
     onDescriptionChange = (e) => {
         const description = e.target.value;
@@ -48,10 +45,9 @@ export default class ExpenseForm extends React.Component {
         }
     };
     onFromAccountChange = (e) => {
-        const fromAccount = e.target.value;
+        const fromAccount = e.value;
         this.setState(() => ({ fromAccount }));
     };
-
     onDateChange = (createdAt) => {
         if (createdAt) {
           this.setState(() => ({ createdAt }));
@@ -76,7 +72,6 @@ export default class ExpenseForm extends React.Component {
         }
       };
       render () {
-          console.log(this.state)
         return (
             <div className="InputForm">
                 {this.state.error && <p>{this.state.error}</p>}
@@ -97,16 +92,12 @@ export default class ExpenseForm extends React.Component {
                         onChange={this.onAmountChange}
                     />
                     <Select
+                        defaultInputValue="From Account"
                         className="FromAccountInput"
+                        value= {{label: this.state.fromAccount, value: this.state.fromAccount}}
                         onChange={this.onFromAccountChange}
                         options={this.state.dropOptions}
                     />
-                    {/* <input
-                        type="text"
-                        placeholder="From Account or Asset"
-                        value={this.state.fromAccount}
-                        onChange={this.onFromAccountChange}
-                    /> */}
                     <SingleDatePicker
                         date={this.state.createdAt}
                         onDateChange={this.onDateChange}

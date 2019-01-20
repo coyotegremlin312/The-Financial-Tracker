@@ -1,7 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import Select from 'react-select';
 import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css'
+import 'react-dates/lib/css/_datepicker.css';
+import database from '../firebase/firebase';
 
 export default class IncomingFundForm extends React.Component {
     constructor(props) {
@@ -10,12 +12,27 @@ export default class IncomingFundForm extends React.Component {
         this.state = {
           description: props.incomingFund ? props.incomingFund.description : '',
           amount: props.incomingFund ? (props.incomingFund.amount / 100).toString() : '',
+          dropOptionsAsset: [],
           toAsset: props.incomingFund ? props.incomingFund.toAsset : '',
           createdAt: props.incomingFund ? moment(props.incomingFund.createdAt) : moment(),
           calendarFocused: false,
           error: ''
         };
       }
+    componentDidMount = () => {
+        database.ref('assets')
+        .on('value', (ashley) => {
+            const assetsList = [];
+        ashley.forEach((childAshley) => {
+            let boom = childAshley.val();
+            assetsList.push({
+                value: boom.description,
+                label: boom.description
+            })
+        this.setState(() => ({ dropOptionsAsset: assetsList }));
+    })
+    });
+    };
     onDescriptionChange = (e) => {
         const description = e.target.value;
         this.setState(() => ({ description }));
@@ -28,7 +45,7 @@ export default class IncomingFundForm extends React.Component {
         }
     };
     onAssetChange = (e) => {
-        const toAsset = e.target.value;
+        const toAsset = e.value;
         this.setState(() => ({ toAsset }));
     };
     onDateChange = (createdAt) => {
@@ -74,12 +91,12 @@ export default class IncomingFundForm extends React.Component {
                         value={this.state.amount}
                         onChange={this.onAmountChange}
                     />
-                    <input
-                        type="text"
-                        placeholder="To Asset or Debt"
-                        className="ToAssetInput"
-                        value={this.state.toAsset}
+                    <Select
+                        defaultInputValue="From Asset"
+                        className="DescriptionInput"
+                        value= {{label: this.state.toAsset, value: this.state.toAsset}}
                         onChange={this.onAssetChange}
+                        options={this.state.dropOptionsAsset}
                     />
                     <SingleDatePicker
                         date={this.state.createdAt}
