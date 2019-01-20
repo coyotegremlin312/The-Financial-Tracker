@@ -85,6 +85,7 @@ button:disabled {
   min-width: 840px;
   margin-top: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .ListTop{
@@ -153,6 +154,7 @@ button:disabled {
   min-width: 700px;
   margin-top: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .ADListTop{
@@ -187,7 +189,17 @@ button:disabled {
 .Dashboard{
   margin-top: 10px;
   min-width: 840px;
+  margin-bottom: 20px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.InputForm{
+  margin-top: 10px;
+  min-width: 840px;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -214,6 +226,8 @@ button:disabled {
 }
 
 .AddEditPage{
+  min-width: 840px;
+  flex-shrink: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
