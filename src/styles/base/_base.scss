@@ -8,7 +8,7 @@ body {
 
 button {
   height: 45px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   font-weight: bold;
   background-color:#00DFD0;
@@ -78,7 +78,7 @@ button:disabled {
   justify-content: space-evenly;
   align-items: center;
   flex-shrink: 50%;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   color: black;
   background-color: white;
@@ -93,7 +93,7 @@ button:disabled {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 25px;
   color: black;
   font-weight: bold;
@@ -118,7 +118,7 @@ button:disabled {
   border-right: 2px solid black;
   border-bottom: 2px solid black;
   min-width: 800px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   background-color: white;
 }
@@ -147,7 +147,7 @@ button:disabled {
   justify-content: space-evenly;
   align-items: center;
   flex-shrink: 50%;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   color: black;
   background-color: white;
@@ -162,7 +162,7 @@ button:disabled {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 25px;
   color: black;
   font-weight: bold;
@@ -181,7 +181,7 @@ button:disabled {
   border-right: 2px solid black;
   border-bottom: 2px solid black;
   min-width: 700px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   background-color: white;
 }
@@ -207,7 +207,7 @@ button:disabled {
 .SearchTextBox{
   height: 45px;
   min-width: 300px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   margin-top: 3px;
@@ -217,7 +217,7 @@ button:disabled {
 
 .SortBySelector{
   height: 50px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   background-color: #00DFD0;
   font-weight: bold;
@@ -242,7 +242,7 @@ button:disabled {
 .DescriptionInput{
   height: 45px;
   min-width: 300px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   margin-top:10px;
@@ -254,7 +254,7 @@ button:disabled {
 .DebtDescriptionInput{
   height: 45px;
   min-width: 300px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 17px;
   margin-right: 20px;
   margin-top:10px;
@@ -265,7 +265,7 @@ button:disabled {
 .AmountInput{
   height: 45px;
   min-width: 100px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   margin-bottom: 10px;
@@ -276,7 +276,7 @@ button:disabled {
 .FromAccountInput{
   height: 45px;
   min-width: 300px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   border: 2px solid black;
@@ -286,7 +286,7 @@ button:disabled {
 .ToAssetInput{
   height: 45px;
   min-width: 300px;
-  font-family: Arial;
+  font-family: fantasy;
   font-size: 20px;
   margin-right: 20px;
   border: 2px solid black;
