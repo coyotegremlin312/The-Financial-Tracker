@@ -7,6 +7,9 @@ class DebtListFilters extends React.Component {
   state = {
     calendarFocused: null
   };
+  componentDidMount = (calendarFocused) => {
+    this.setState(() => ({ calendarFocused }));
+  }
   onDatesChange = ({ startDate, endDate }) => {
     this.props.dispatch(setStartDate(startDate));
     this.props.dispatch(setEndDate(endDate));
